@@ -1,0 +1,19 @@
+/node_modules/
+/client/bower_components/
+/server/*.js
+/server/config/*.js
+/typings/
+
+# /client/styles/css
+# /client/**/*.js
+# /server/api/**/*.js
+# /server/auth/**/*.js
+# /server/config/*.js
+# /server/*.js
+# !*.spec.js
+# /.idea/
+# /dist/
+# /.sass-cache/
+# /typings/
+
+# /.cache
