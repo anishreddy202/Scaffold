@@ -3,8 +3,6 @@
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var watch = require('gulp-watch');
-var	bowerFiles  = require('main-bower-files');
-var	inject 		= require('gulp-inject');
 	
 
 gulp.task('default',function(cb){

@@ -25,6 +25,15 @@
     },
     "run-sequence/run-sequence.d.ts": {
       "commit": "c7b1128cc9a8f5797bade826e7632b36b06a856c"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "c7b1128cc9a8f5797bade826e7632b36b06a856c"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "c7b1128cc9a8f5797bade826e7632b36b06a856c"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "c7b1128cc9a8f5797bade826e7632b36b06a856c"
     }
   }
 }

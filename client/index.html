@@ -14,19 +14,24 @@
     <!-- endbuild -->
 
   </head>
-  <body>
-
-    <strong>11234</strong>
-	
+  <body >
+	 <div ng-app="uiApp">
+		 <div ui-view=""></div>
+	 </div>	
     <!-- build:js app.js -->
 
     <!-- bower:js -->
 
     <script src="bower_components/angular/angular.js"></script>
 
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
     <!-- endinject -->
 
     <!-- inject:js -->
+		<script src="app/app.ts"></script>
+		<script src="app/home/home.ts"></script>
+		<script src="app/home/home.controller.ts"></script>
     <!-- endinject -->
 
     <!-- endbuild -->
