@@ -27,5 +27,11 @@
     "gulp-watch": "^4.2.4",
     "main-bower-files": "^2.8.2",
     "run-sequence": "^1.1.1"
-  }
+  },
+  "scripts": {
+   "postinstall": "tsd reinstall -so",
+   "start": "node server/server.js",
+   "develop": "gulp",
+   "test": "gulp test"
+ }
 }

@@ -4,14 +4,14 @@
 'use strict';
 
 	angular
-		.module('uiApp.bootstrap',[])
+		.module('uiApp.myapps',[])
 		.config(config);
 
 	function config($stateProvider) {
 		$stateProvider
-			.state('bootstrap', {
-				url: '/bootstrap',
-				templateUrl: 'app/bootstrap/bootstrap.html'
+			.state('myapps', {
+				url: '/myapps',
+				templateUrl: 'app/myapps/myapps.html'
 		});
 	}
 })();

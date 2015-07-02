@@ -1,0 +1,111 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a><i>Applications</i><span class="sr-only">(current)</span></a></li>
+        <li><a class="selected">Test</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong class="panel-title">Application Properties</strong>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="name" value="Test">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tier" class="col-sm-2 control-label">Throttling Tier</label>
+                <div class="col-sm-5 col-md-2">
+                  <select class="form-control">
+                    <option>Unlimited</option>
+                    <option>Bronze</option>
+                    <option>Silver</option>
+                    <option>Gold</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="status" class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-2">
+                  <p class="form-control-static">APPROVED</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="desc" class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-5">
+                  <input type="text" class="form-control" id="desc" value="adsfd">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-xs-6 col-sm-2">
+                  <button class="btn btn-primary">Update</button>
+                </div>
+                <div class="col-xs-6 col-sm-2">
+                  <button class="btn btn-default">Delete</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong class="panel-title">Access Keys</strong>
+          </div>
+          <div class="panel-body">
+            <div class="container-fluid">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="key" class="col-xs-12 col-sm-5 col-md-3 control-label">Application Key</label>
+                  <div id="key" class="col-xs-12 col-sm-7 col-md-6">
+                    <p class="form-control-static token-key">mMc4EvG7kwhr8R4wtZBigP5oTVoa</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="secret" class="col-xs-12 col-sm-5 col-md-3 control-label">Application Secret</label>
+                  <div class="col-xs-12 col-sm-7 col-md-6">
+                    <p class="form-control-static token-key">1ZLVtEQcPIjvueULFv1sGbF9vVAa</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="token" class="col-xs-12 col-sm-5 col-md-3 control-label">Access Token</label>
+                  <div id="token" class="col-xs-12 col-sm-7 col-md-6">
+                    <p class="form-control-static token-key">HCd1qkflwM1QPgpWimFX2r9ltnoa</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <span>Validity Time:</span>
+                    <input type="text" class="mini-input" value="3600">
+                    <span>Seconds</span>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <button class="btn btn-primary">Re-generate</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <strong class="panel-title">Enabled Product Services</strong>
+          </div>
+          <div class="panel-body">
+            <img class="screen-shot" src="../../assets/images/screen-shots/subs.png">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

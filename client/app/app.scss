@@ -1,11 +1,28 @@
 body {
-  font-family: sans-serif;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
+html {
+/* The html and body elements cannot have any padding or margin. */
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin: 0 auto -15px; /* the bottom margin is the negative value of the footer's height */
+}
+
 
 $font-path: "/assets/fonts";
 $fa-font-path: "/assets/fonts";
 
-@import '../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+//@import '../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 @import '../styles/_mixins.scss';
 @import '../styles/_variables.scss';
 @import '../styles/_bs_elements.scss';
