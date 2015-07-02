@@ -1,0 +1,66 @@
+.bs-docs-section {
+  margin-top: 4em;
+}
+.bs-component {
+  position: relative;
+  .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    z-index: 1;
+    display: block;
+  }
+  .modal-dialog {
+    width: 90%;
+  }
+  .popover {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    margin: 20px;
+  }
+}
+#source-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  font-weight: 700;
+}
+.icon-preview {
+  margin: 0px 0px 10px;
+  display: inline-block;
+  padding: 0.5em;
+  min-width: 10%;
+  width: auto;
+  text-align: center;
+  [class^="icon-"],[class*="icon-"] {
+    display: block;
+    height: 80px;
+    font-size: 1.5em;
+    line-height: 100px;
+    transition: all 0.3s ease-in-out 0s;
+    &:hover {
+      font-size: 3em;
+    }
+  }
+}
+.color-preview {
+  margin: 0px 1% 30px;
+  padding-top: 5px;
+  padding-right: 0px;
+  padding-left: 0px;
+  min-width: 110px;
+  max-width: 115px;
+  width: 7%;
+  text-align: center;
+  float: left;
+  .color-swatch {
+    width: 90%;
+    height: 60px;
+    display: inline-block;
+  }
+}
+

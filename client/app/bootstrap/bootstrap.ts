@@ -4,16 +4,14 @@
 'use strict';
 
 	angular
-		.module('uiApp.home',[])
+		.module('uiApp.bootstrap',[])
 		.config(config);
 
 	function config($stateProvider) {
 		$stateProvider
-			.state('home', {
-				url: '/home',
-				templateUrl: 'app/home/home.html',
-				controller: 'HomeCtrl',
-				controllerAs: 'vm'
+			.state('bootstrap', {
+				url: '/',
+				templateUrl: 'app/bootstrap/bootstrap.html'
 		});
 	}
 })();
