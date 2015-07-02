@@ -8,7 +8,12 @@ var gulp        = require('gulp'),
 
 
 var filestoInject =[
-	'client/app/*.js','client/app/**/*.js'];
+	'client/app/*.js','client/app/**/*.js'
+	];
+	
+var cssfilesToInject = [
+	'client/app/app.css'
+	];
 
 module.exports = function(){
 	return gulp.src('client/index.html')
@@ -18,6 +23,9 @@ module.exports = function(){
         }))
 		.pipe(inject(
             gulp.src(filestoInject).pipe(fileSort()), { relative: true }
+        ))
+		.pipe(inject(
+            gulp.src(cssfilesToInject),{ relative: true }
         ))
         .pipe(gulp.dest('client'));
 }

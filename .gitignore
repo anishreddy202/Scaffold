@@ -6,6 +6,7 @@
 /client/**/*.js.map
 /server/config/*.js
 /typings/
+/client/**/*.css
 
 # /client/styles/css
 # /client/**/*.js
