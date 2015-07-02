@@ -2,6 +2,7 @@
 'use strict'
 
 var pkg = require('../package.json');
+var configJson = require('./config/environment');
 
 module.exports = function(app){
 	
@@ -10,6 +11,6 @@ module.exports = function(app){
 	});
   
 	app.route('/*').get((req,res) =>{
-		res.sendFile(app.get('appPath') + '/index.html')
+		res.sendFile(app.get('appPath') + '/index.html',{ root: configJson.root });
 	});
 }

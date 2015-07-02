@@ -1,6 +1,9 @@
 /node_modules/
 /client/bower_components/
 /server/*.js
+/server/*.js.map
+/client/**/*.js
+/client/**/*.js.map
 /server/config/*.js
 /typings/
 

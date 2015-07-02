@@ -9,8 +9,9 @@ gulp.task('default',function(cb){
 	runSequence('typescript','serve',cb);
 });
 
-gulp.task('typescript',['typescript-server']);
+gulp.task('typescript',['typescript-server','typescript-client']);
 gulp.task('typescript-server', require('./tasks/typescript-server'));
+gulp.task('typescript-client', require('./tasks/typescript-client'));
 
 gulp.task('serve',	['watch'], require('./tasks/serve') );
 gulp.task('watch', ['inject'],  function(){
