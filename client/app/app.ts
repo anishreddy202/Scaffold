@@ -4,7 +4,6 @@
 angular.module('uiApp',[
 	'ui.router',
 	'uiApp.header',
-	'uiApp.home',
 	'uiApp.myapps',
 	'uiApp.bootstrap',
 	'uiApp.cms'
