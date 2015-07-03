@@ -10,12 +10,21 @@ module.exports = function(app){
 		res.json({"name": pkg.name, "version": "v1", "rev": pkg.version });
 	});
   
-	app.route('/').get((req,res) =>{
-		res.sendFile(app.get('appPath') + '/index.html',{ root: configJson.root });
+	// app.route('/').get((req,res) =>{
+	// 	//res.sendFile(app.get('appPath') + '/index.html',{ root: configJson.root });
+	// 	res.sendFile('index.html');
+	// });
+	
+	// app.get('/',function(req,res){
+	//   res.sendFile(app.get('appPath') + '/home.html',{ root: configJson.root });
+	// });
+	
+	app.get('/',function(req,res){
+	  res.sendFile('server/home.html',{ root: './' });
 	});
 	
-	app.get('/home',function(req,res){
-	  res.sendFile(app.get('appPath') + '/home.html',{ root: configJson.root });
+	app.get('/myapps',function(req,res){
+	  res.sendFile('server/myapps.html',{ root: './' });
 	});
 	
 }

@@ -4,10 +4,11 @@
 'use strict';
 
 	angular
-		.module('uiApp.myapps',[])
+		.module('uiApp.myapps',['ui.router'])
 		.config(config);
 
-	function config($stateProvider) {
+	function config($urlRouterProvider,$stateProvider) {
+		$urlRouterProvider.otherwise('/myapps');
 		$stateProvider
 			.state('myapps', {
 				url: '/myapps',
