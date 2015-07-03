@@ -9,16 +9,13 @@
    <link rel="stylesheet" href="app/app.css">
  </head>
  <body >
-     <div id="wrapper" ng-app="uiApp">
-		 <div>
+     <div id="wrapper">
+		 <div ng-app="uiApp.header">
          	<header data-ng-include=" 'app/header/header.html'"></header>
 		 </div>
-		 <div>
+		 <div ng-app="uiApp.myapps">
 			 <ui-view></ui-view>
 		 </div>
-         <!--<section id="mainSection">
-            <img class="screen-shot" src="assets/images/screen-shots/home.png">
-        </section>-->
      </div>    
 
    <script src="bower_components/angular/angular.js"></script>
@@ -26,15 +23,14 @@
    <script src="bower_components/jquery/dist/jquery.js"></script>
    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 
-    <script src="app/cms/users/users.js"></script>
-    <script src="app/cms/jobs/jobs.js"></script>
     <script src="app/myapps/myapps.js"></script>
 	<script src="app/myapps/myapps.controller.js"></script>
     <script src="app/header/header.js"></script>
     <script src="app/header/header.controller.js"></script>
-    <script src="app/cms/cms.js"></script>
-    <script src="app/bootstrap/bootstrap.js"></script>
-    <script src="app/app.js"></script>
-
+	<script>
+	    angular.element(document).ready(function() {
+	      angular.bootstrap(document, ['uiApp.myapps']);
+	    });
+	</script>
  </body>
 </html>

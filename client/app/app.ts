@@ -13,7 +13,7 @@ angular.module('uiApp',[
 	
 function config($urlRouterProvider, $stateProvider){
 	//$rootScope.uiView= true;
-	$urlRouterProvider.otherwise('/myapps');
+	$urlRouterProvider.otherwise('/');
 	// $stateProvider
 	// 	.state(' ', {
 	// 		url: '/',
