@@ -8,8 +8,8 @@
 		.config(config);
 
 	function config($urlRouterProvider,$stateProvider) {
-		$urlRouterProvider.otherwise('/cms');
-		//$urlRouterProvider.when('/cms', '/cms/users');
+		//$urlRouterProvider.otherwise('/cms');
+		$urlRouterProvider.when('/cms', '/cms/users');
 		$stateProvider
 			.state('cms', {
 				url: '/cms',
