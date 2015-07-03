@@ -4,6 +4,7 @@
 'use strict';
 
 	angular
-		.module('uiApp.header',[]);
+		.module('uiApp.header',[])
+		.config(config);
 
 })();

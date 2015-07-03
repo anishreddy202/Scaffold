@@ -14,11 +14,11 @@ angular.module('uiApp',[
 function config($urlRouterProvider, $stateProvider){
 	//$rootScope.uiView= true;
 	$urlRouterProvider.otherwise('/');
-		$stateProvider
-		.state(' ', {
-			url: '/',
-			templateUrl: 'home.html',
-	});
+	// $stateProvider
+	// 	.state(' ', {
+	// 		url: '/',
+	// 		templateUrl: 'home.html',
+	// });
 }
 
 function appRun($rootScope, $location) {
