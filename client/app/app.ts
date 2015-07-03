@@ -9,8 +9,27 @@ angular.module('uiApp',[
 	'uiApp.bootstrap',
 	'uiApp.cms'
 	])
-	.config(config);
+	.config(config)
+	.run(appRun);
 	
 function config($urlRouterProvider, $stateProvider){
+	//$rootScope.uiView= true;
 	$urlRouterProvider.otherwise('/');
+		$stateProvider
+		.state('', {
+			url: '/',
+			templateUrl: 'home.html',
+	});
+}
+
+function appRun($rootScope, $location) {
+  $rootScope.uiView = true;
+  $rootScope.$on('$stateChangeStart', function (event, next) {
+	  if(next.name == ""){
+		  $rootScope.uiView = true;
+	  }
+	  else{
+		 $rootScope.uiView = false; 
+	  }
+  });
 }
