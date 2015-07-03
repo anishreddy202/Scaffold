@@ -15,7 +15,7 @@ function config($urlRouterProvider, $stateProvider){
 	//$rootScope.uiView= true;
 	$urlRouterProvider.otherwise('/');
 		$stateProvider
-		.state('', {
+		.state(' ', {
 			url: '/',
 			templateUrl: 'home.html',
 	});
