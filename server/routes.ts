@@ -17,6 +17,9 @@ module.exports = function(app){
 	app.get('/myapps',function(req,res){
 	  res.sendFile('server/MyApps/myapps.html',{ root: './' });
 	});
+		app.get('/products',function(req,res){
+	  res.sendFile('server/products/cms.html',{ root: './' });
+	});
 	
 	app.use(function(req, res) {
       res.sendFile('server/Error/error.html',{ root: './' });

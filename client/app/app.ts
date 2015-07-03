@@ -5,8 +5,7 @@ angular.module('uiApp',[
 	'ui.router',
 	'uiApp.header',
 	'uiApp.myapps',
-	'uiApp.bootstrap',
-	'uiApp.cms'
+	'uiApp.bootstrap'
 	])
 	.config(config)
 	.run(appRun);
