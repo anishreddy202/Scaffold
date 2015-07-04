@@ -15,5 +15,6 @@ module.exports = (app)=>{
 	app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 	app.use(express.static(path.join(config.root, 'client')));
+	app.use(express.static(path.join(config.root, 'server/public')));
 	app.set('appPath', 'client'); 
 }
