@@ -13,15 +13,15 @@
 		$stateProvider
 			.state('cms', {
 				url: '/cms',
-				templateUrl: 'app/cms/cms.html'
+				templateUrl: 'cms/cms.html'
 			})			
 			.state('cms.jobs', {
 				url: '/jobs',
-				templateUrl: 'app/cms/jobs/jobs.html'
+				templateUrl: 'cms/jobs/jobs.html'
 			})
 			.state('cms.users', {
 				url: '/users',
-				templateUrl: 'app/cms/users/users.html'
+				templateUrl: 'cms/users/users.html'
 			})
 	}
 })();

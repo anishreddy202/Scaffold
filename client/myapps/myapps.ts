@@ -12,7 +12,7 @@
 		$stateProvider
 			.state('myapps', {
 				url: '/myapps',
-				templateUrl: 'app/myapps/myapps.html'
+				templateUrl: 'myapps/myapps.html'
 		});
 	}
 })();
