@@ -5,9 +5,9 @@ var gulp        = require('gulp'),
 	typescript  = require('gulp-typescript'),
 	sourcemaps  = require('gulp-sourcemaps');
 
-var dest = './client';
+var dest = './client/apps';
 var tsSources = [
-	 'client/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
+	 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
 
 var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 
