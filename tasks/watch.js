@@ -7,8 +7,7 @@ var gulp = require('gulp'),
 module.exports = function(){
 	
 	var tsClientSources = [
-		'client/app.ts',
-		'client/app/**/*.ts'
+		'client/apps/**/*.ts'
 	]
 	
 	watch(tsClientSources, function () {

@@ -11,7 +11,7 @@
 
   function MyAppsCtrl () {
     var vm = this;
-	vm.message = "This is MyApps"
+	vm.message = "This is MyApps folder"
   }
 
 })();

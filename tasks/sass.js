@@ -6,8 +6,8 @@ var gulp    = require('gulp'),
 	sass    = require('gulp-sass');
 
 module.exports = function () {
-    return gulp.src('client/app/app.scss')
+    return gulp.src('client/apps/app.scss')
         .pipe(plumber())
         .pipe(sass())
-        .pipe(gulp.dest('client/app'));
+        .pipe(gulp.dest('client/apps'));
 };

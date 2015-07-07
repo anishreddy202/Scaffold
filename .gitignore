@@ -7,6 +7,7 @@
 /server/config/*.js
 /typings/
 /client/**/*.css
+/dist/
 
 # /client/styles/css
 # /client/**/*.js

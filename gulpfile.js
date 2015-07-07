@@ -16,10 +16,8 @@ gulp.task('typescript-client', require('./tasks/typescript-client'));
 gulp.task('sass', require('./tasks/sass'));
 
 gulp.task('serve',	['watch'], require('./tasks/serve') );
-gulp.task('watch', ['inject'],  function(){
-	watch('server/**/*.ts', function () {
-    	gulp.start('typescript');
-  	});
-});
+gulp.task('watch', ['inject'],  require('./tasks/watch'));
 gulp.task('inject',[],require('./tasks/inject'));
+
+gulp.task('build',[],require('./tasks/build'));
 
