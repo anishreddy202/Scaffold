@@ -7,15 +7,22 @@ var minifyCss            = require('gulp-minify-css');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var sq                   = require('streamqueue');
 var concat               = require('gulp-concat');
+var uglify               = require('gulp-uglify');
 var	typescript  = require('gulp-typescript');
 var	sourcemaps  = require('gulp-sourcemaps');
+var nodemon     = require('gulp-nodemon');
+var open 		= require('gulp-open');
+var	plumber 	= require('gulp-plumber');
+var	sass    	= require('gulp-sass');
 
 module.exports = function (done) {
   runSequence(
     ['clean:dist'],
 	['copy:dist'],
+	['sass:dist','styles:dist'],
 	['typescript:dist'],
 	['scripts:dist'],
+	['serve:dist'],
     done);
 };
 	
@@ -63,7 +70,7 @@ gulp.task('typescript-client:dist', function(){
 });
 
 gulp.task('scripts:dist', function (done) {
-	runSequence(['build:headerApp:dist','build:cmsApp:dist','build:myApps:dist','build:vendorScripts'],['removeScripts:dist'], done);
+	runSequence(['build:headerApp:dist','build:cmsApp:dist','build:myApps:dist','build:vendorScripts:dist'],['removeScripts:dist'], done);
 });
 
 gulp.task('build:headerApp:dist', function (done) {
@@ -72,7 +79,8 @@ gulp.task('build:headerApp:dist', function (done) {
 		'dist/client/apps/header/header.controller.js']);
 			
 	return sq({ objectMode: true }, scripts)
-	    .pipe(concat('header.min.js'))	
+	    .pipe(concat('header.min.js'))
+		.pipe(uglify())	
 	    .pipe(gulp.dest('dist/client/apps/header'));
 
 });
@@ -81,7 +89,8 @@ gulp.task('build:cmsApp:dist', function (done) {
 	var scripts = gulp.src('dist/client/apps/cms/cms.js')
 	
 	return sq({ objectMode: true }, scripts)
-    .pipe(concat('cms.min.js'))	
+    .pipe(concat('cms.min.js'))
+	.pipe(uglify())	
     .pipe(gulp.dest('dist/client/apps/cms'));
 
 });
@@ -92,7 +101,8 @@ gulp.task('build:myApps:dist', function (done) {
 		'dist/client/apps/myapps/myapps.controller.js']);
 	
 	return sq({ objectMode: true }, scripts)
-    .pipe(concat('myapps.min.js'))	
+    .pipe(concat('myapps.min.js'))
+	.pipe(uglify())		
     .pipe(gulp.dest('dist/client/apps/myapps'));
 
 });
@@ -104,13 +114,21 @@ gulp.task('removeScripts:dist', function (done) {
 
 });
 
+gulp.task('styles:dist', function (done) {
+		var vendorSrc = [
+		'client/bower_components/bootstrap-theme-vz/paper/bootstrap.min.css',
+	];
+		
+	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/styles'));
+});
+
 // gulp.task('cssmin',['scripts'], function () {
 //   return gulp.src('client/apps/app.css')
 //   	.pipe(autoprefixer())
 //     .pipe(gulp.dest('dev/client/apps'));
 // });
 
-gulp.task('build:vendorScripts', function (done) {
+gulp.task('build:vendorScripts:dist', function (done) {
 	
 	var vendorSrc = [
 		'client/bower_components/angular/angular.js',
@@ -122,3 +140,38 @@ gulp.task('build:vendorScripts', function (done) {
 	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/scripts'));
 
 });
+
+gulp.task('serve:dist', function (done) {
+	
+var config = require('../server/config/environment');
+
+var openOpts = {
+    url: 'http://localhost:' + config.port,
+    already: false
+};
+
+nodemon({ 
+		script: 'dist/server/server.js',
+		ext:'js'
+		})
+		.on('start', function () {
+                if (!openOpts.already) {
+                    openOpts.already = true;
+					gulp.src('dist/server/home/home.html')
+                    	.pipe(open('', openOpts));
+                } else {
+
+                }
+            });
+
+});
+
+gulp.task('sass:dist', function (done) {
+
+  return gulp.src('client/apps/app.scss')
+        .pipe(plumber())
+        .pipe(sass())
+		.pipe(minifyCss())
+        .pipe(gulp.dest('dist/client/apps'));
+});
+

@@ -5,7 +5,9 @@
 
 var gulp        = require('gulp'),
 	nodemon     = require('gulp-nodemon'),
-	open 		= require('gulp-open');
+	open 		= require('gulp-open'),
+	ripe       = require('ripe'),
+	livereload = require('gulp-livereload');
 
 var config = require('../server/config/environment');
 
@@ -22,10 +24,12 @@ module.exports = function(){
 		.on('start', function () {
                 if (!openOpts.already) {
                     openOpts.already = true;
-					gulp.src('client/index.html')
+					gulp.src('dev/server/home/home.html')
                     	.pipe(open('', openOpts));
                 } else {
-
+					// ripe.wait(function () {
+                    //     livereload.changed('/');
+                    // });
                 }
             });
 }

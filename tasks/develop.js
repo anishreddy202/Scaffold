@@ -9,11 +9,13 @@ var sq                   = require('streamqueue');
 var concat               = require('gulp-concat');
 var	typescript  = require('gulp-typescript');
 var	sourcemaps  = require('gulp-sourcemaps');
+var livereload = require('gulp-livereload');
 
 module.exports = function (done) {
   runSequence(
     ['clean:dev'],
-	['copy:dev'],
+	['copy:dev','copy:html'],
+	['sass','styles'],
 	['typescript:dev'],
 	['scripts'],
 	['serve'],
@@ -23,10 +25,14 @@ module.exports = function (done) {
 var srcFiles= [
 	'package.json',
 	'client/assets/**/*',
-	'client/apps/**/*.html',
 	'server/**/*',
 	'!server/**/*.ts'
 ]
+
+var htmlFiles = [
+	'client/apps/**/*.html',
+	'server/**/*.html',
+];
 
 var src = "./dev"
 
@@ -36,6 +42,10 @@ gulp.task('clean:dev', function (done) {
 
 gulp.task('copy:dev', function () {
   return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dev/'));
+});
+
+gulp.task('copy:html', function () {
+  return gulp.src(htmlFiles, { base: './' }).pipe(gulp.dest('dev/'));
 });
 
 gulp.task('typescript:dev',['typescript-server:dev','typescript-client:dev']);
@@ -64,6 +74,14 @@ gulp.task('typescript-client:dev', function(){
 
 gulp.task('scripts', function (done) {
 	runSequence(['build:headerApp','build:cmsApp','build:myApps','build:vendorScripts'],['removeScripts'], done);
+});
+
+gulp.task('styles', function (done) {
+		var vendorSrc = [
+		'client/bower_components/bootstrap-theme-vz/paper/bootstrap.min.css',
+	];
+		
+	return gulp.src(vendorSrc).pipe(gulp.dest('dev/client/styles'));
 });
 
 gulp.task('build:headerApp', function (done) {

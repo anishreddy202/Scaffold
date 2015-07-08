@@ -17,7 +17,7 @@ gulp.task('default',function(cb){
 // gulp.task('typescript-server', require('./tasks/typescript-server'));
 // gulp.task('typescript-client', require('./tasks/typescript-client'));
 
-// gulp.task('sass', require('./tasks/sass'));
+gulp.task('sass', require('./tasks/sass'));
 
 gulp.task('serve',	['watch'], require('./tasks/serve') );
 
