@@ -11,10 +11,16 @@ module.exports = function(){
 	]
 	
 	watch(tsClientSources, function () {
-    	gulp.run('typescript-client');
+    	gulp.run('typescript-client:dev');
   	});
 	  
+	watch('server/**/*.html', function () {
+    	gulp.run('copy:dev');
+  	});
+    
+	
+	  
 	watch('server/**/*.ts', function () {
-    	gulp.run('typescript-server');
+    	gulp.run('typescript-server:dev');
   	});
 }

@@ -8,6 +8,7 @@
 /typings/
 /client/**/*.css
 /dist/
+/dev/
 
 # /client/styles/css
 # /client/**/*.js

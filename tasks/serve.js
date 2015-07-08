@@ -16,7 +16,7 @@ var openOpts = {
 
 module.exports = function(){
 	return nodemon({ 
-		script: 'dist/server/server.js',
+		script: 'dev/server/server.js',
 		ext:'js'
 		})
 		.on('start', function () {

@@ -12,10 +12,11 @@ var	sourcemaps  = require('gulp-sourcemaps');
 
 module.exports = function (done) {
   runSequence(
-    ['clean:dist'],
-	['copy:dist'],
-	['typescript:dist'],
-	['scripts:dist'],
+    ['clean:dev'],
+	['copy:dev'],
+	['typescript:dev'],
+	['scripts'],
+	['serve'],
     done);
 };
 	
@@ -27,19 +28,19 @@ var srcFiles= [
 	'!server/**/*.ts'
 ]
 
-var src = "./dist"
+var src = "./dev"
 
-gulp.task('clean:dist', function (done) {
-  del(['dist/**', '!dist', '!dist/.git{,/**}'], done);
+gulp.task('clean:dev', function (done) {
+  del(['dev/**', '!dev', '!dev/.git{,/**}'], done);
 });
 
-gulp.task('copy:dist', function () {
-  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dist/'));
+gulp.task('copy:dev', function () {
+  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dev/'));
 });
 
-gulp.task('typescript:dist',['typescript-server:dist','typescript-client:dist']);
+gulp.task('typescript:dev',['typescript-server:dev','typescript-client:dev']);
 
-gulp.task('typescript-server:dist', function(){
+gulp.task('typescript-server:dev', function(){
 	var tsSources = ['server/**/*.ts', 'typings/**/*.ts'];
 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
@@ -47,10 +48,9 @@ gulp.task('typescript-server:dist', function(){
 		.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(gulp.dest('./dist/server'));
-		
+	.pipe(gulp.dest('./dev/server'));	
 });
-gulp.task('typescript-client:dist', function(){
+gulp.task('typescript-client:dev', function(){
 	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
@@ -58,48 +58,48 @@ gulp.task('typescript-client:dist', function(){
 		.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(gulp.dest('./dist/client/apps'));
+	.pipe(gulp.dest('./dev/client/apps'));
 	
 });
 
-gulp.task('scripts:dist', function (done) {
-	runSequence(['build:headerApp:dist','build:cmsApp:dist','build:myApps:dist','build:vendorScripts'],['removeScripts:dist'], done);
+gulp.task('scripts', function (done) {
+	runSequence(['build:headerApp','build:cmsApp','build:myApps','build:vendorScripts'],['removeScripts'], done);
 });
 
-gulp.task('build:headerApp:dist', function (done) {
+gulp.task('build:headerApp', function (done) {
 	
-	var scripts = gulp.src(['dist/client/apps/header/header.js',
-		'dist/client/apps/header/header.controller.js']);
+	var scripts = gulp.src(['dev/client/apps/header/header.js',
+		'dev/client/apps/header/header.controller.js']);
 			
 	return sq({ objectMode: true }, scripts)
 	    .pipe(concat('header.min.js'))	
-	    .pipe(gulp.dest('dist/client/apps/header'));
+	    .pipe(gulp.dest('dev/client/apps/header'));
 
 });
 
-gulp.task('build:cmsApp:dist', function (done) {
-	var scripts = gulp.src('dist/client/apps/cms/cms.js')
+gulp.task('build:cmsApp', function (done) {
+	var scripts = gulp.src('dev/client/apps/cms/cms.js')
 	
 	return sq({ objectMode: true }, scripts)
     .pipe(concat('cms.min.js'))	
-    .pipe(gulp.dest('dist/client/apps/cms'));
+    .pipe(gulp.dest('dev/client/apps/cms'));
 
 });
 
-gulp.task('build:myApps:dist', function (done) {
+gulp.task('build:myApps', function (done) {
 			
-	var scripts = gulp.src(['dist/client/apps/myapps/myapps.js',
-		'dist/client/apps/myapps/myapps.controller.js']);
+	var scripts = gulp.src(['dev/client/apps/myapps/myapps.js',
+		'dev/client/apps/myapps/myapps.controller.js']);
 	
 	return sq({ objectMode: true }, scripts)
     .pipe(concat('myapps.min.js'))	
-    .pipe(gulp.dest('dist/client/apps/myapps'));
+    .pipe(gulp.dest('dev/client/apps/myapps'));
 
 });
 
-gulp.task('removeScripts:dist', function (done) {
+gulp.task('removeScripts', function (done) {
 	
-	var src = ['dist/client/apps/**/*.js','!dist/client/apps/**/*.min.js']		
+	var src = ['dev/client/apps/**/*.js','!dev/client/apps/**/*.min.js']		
 	del(src,done);
 
 });
@@ -119,6 +119,6 @@ gulp.task('build:vendorScripts', function (done) {
 		'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
 	];
 		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/scripts'));
+	return gulp.src(vendorSrc).pipe(gulp.dest('dev/client/scripts'));
 
 });
