@@ -17,14 +17,14 @@ This is the Source Code Repository to be used for the **IoT Developer Portal Web
 ## Contact List
 
 
-Web Dev                      | Design                           | Server Dev
----------------------------- | -------------------------------- | ------------------------
-Hari Mukkapati   (Dev-Mgr)   | Daniel Scholl       (Team-Mgr)   | Nitin Khana (Dev-Mgr)
-Anish Madhi          (Dev)   | Johnny Chance       (Design)     | Steve Preston (Dev)
-Rajesh Chaganti      (Dev)   | Srini Bhukya        (Design)     |
-Karthik Vellaichamy  (Dev)   | Ning Fang           (UX)         |
-Sung Park            (Dev)   | Michael Mucciarone  (UX)         |
-Gerry Hernandez      (Dev)   |                                  |
+Web Dev                      | Design                           
+---------------------------- | -------------------------------- 
+Hari Mukkapati   (Dev-Mgr)   | Daniel Scholl       (Team-Mgr)   
+Anish Madhi          (Dev)   | Johnny Chance       (Design)     
+Rajesh Chaganti      (Dev)   | Srini Bhukya        (Design)     
+Karthik Vellaichamy  (Dev)   | Ning Fang           (UX)         
+Sung Park            (Dev)   | Michael Mucciarone  (UX)         
+Gerry Hernandez      (Dev)   |                                  
 
 
 
