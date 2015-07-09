@@ -7,18 +7,18 @@ var minifyCss            = require('gulp-minify-css');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var sq                   = require('streamqueue');
 var concat               = require('gulp-concat');
+var fileSort    = require('gulp-angular-filesort');
 var	typescript  = require('gulp-typescript');
 var	sourcemaps  = require('gulp-sourcemaps');
-var livereload = require('gulp-livereload');
+var livereload  = require('gulp-livereload');
+var fs 		    = require('fs');
+var path 	    = require('path');
 
 module.exports = function (done) {
+	
   runSequence(
-    ['clean:dev'],
-	['copy:dev','copy:html'],
-	['sass','styles'],
-	['typescript:dev'],
-	['scripts'],
-	['serve'],
+    ['clean:dev'],['copy:dev','copy:html'],['sass','styles'],
+	['typescript:dev'],['scripts'],['removeScripts'],['serve'],
     done);
 };
 	
@@ -34,18 +34,25 @@ var htmlFiles = [
 	'server/**/*.html',
 ];
 
-var src = "./dev"
+var vendorSrc = [
+	'client/bower_components/angular/angular.js',
+	'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+	'client/bower_components/jquery/dist/jquery.js',
+	'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
+];
+
+var dest = "./dev"
 
 gulp.task('clean:dev', function (done) {
-  del(['dev/**', '!dev', '!dev/.git{,/**}'], done);
+  del([dest + '/**'], done);
 });
 
 gulp.task('copy:dev', function () {
-  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dev/'));
+  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest(dest));
 });
 
 gulp.task('copy:html', function () {
-  return gulp.src(htmlFiles, { base: './' }).pipe(gulp.dest('dev/'));
+  return gulp.src(htmlFiles, { base: './' }).pipe(gulp.dest(dest));
 });
 
 gulp.task('typescript:dev',['typescript-server:dev','typescript-client:dev']);
@@ -58,85 +65,57 @@ gulp.task('typescript-server:dev', function(){
 		.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(gulp.dest('./dev/server'));	
+	.pipe(gulp.dest( dest + '/server'));	
 });
-gulp.task('typescript-client:dev', function(){
-	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
-	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
+// gulp.task('typescript-client:dev', function(){
+// 	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
+// 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
-	var tsResult = gulp.src(tsSources)
-		.pipe(typescript(tsConfigOptions));
+// 	var tsResult = gulp.src(tsSources)
+// 		.pipe(typescript(tsConfigOptions));
 
- 	return tsResult.js
-	.pipe(gulp.dest('./dev/client/apps'));
+//  	return tsResult.js
+// 	.pipe(gulp.dest(dest + '/client/apps'));
 	
-});
+// });
+
+gulp.task('typescript-client:dev',require('./typescript-client'));
 
 gulp.task('scripts', function (done) {
-	runSequence(['build:headerApp','build:cmsApp','build:myApps','build:vendorScripts'],['removeScripts'], done);
+	runSequence(['build:scripts'],['build:vendorScripts'],['removeScripts'], done);
 });
 
 gulp.task('styles', function (done) {
-		var vendorSrc = [
+	var vendorSrc = [
 		'client/bower_components/bootstrap-theme-vz/paper/bootstrap.min.css',
 	];
 		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dev/client/styles'));
+	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/styles'));
 });
 
-gulp.task('build:headerApp', function (done) {
+gulp.task('build:scripts', function () {
 	
-	var scripts = gulp.src(['dev/client/apps/header/header.js',
-		'dev/client/apps/header/header.controller.js']);
-			
-	return sq({ objectMode: true }, scripts)
-	    .pipe(concat('header.min.js'))	
-	    .pipe(gulp.dest('dev/client/apps/header'));
-
-});
-
-gulp.task('build:cmsApp', function (done) {
-	var scripts = gulp.src('dev/client/apps/cms/cms.js')
+	var appsPath = dest + '/client/apps';
 	
-	return sq({ objectMode: true }, scripts)
-    .pipe(concat('cms.min.js'))	
-    .pipe(gulp.dest('dev/client/apps/cms'));
-
-});
-
-gulp.task('build:myApps', function (done) {
-			
-	var scripts = gulp.src(['dev/client/apps/myapps/myapps.js',
-		'dev/client/apps/myapps/myapps.controller.js']);
+	var folders = fs.readdirSync(appsPath)
+		.filter(function(file) {
+			return fs.statSync(path.join(appsPath, file)).isDirectory();
+		});
 	
-	return sq({ objectMode: true }, scripts)
-    .pipe(concat('myapps.min.js'))	
-    .pipe(gulp.dest('dev/client/apps/myapps'));
+	return folders.map(function(folder){
+	     gulp.src(path.join(appsPath, folder, '/**/*.js'))
+		 	.pipe(fileSort())
+			.pipe(concat(folder + '.min.js'))
+			.pipe(gulp.dest(appsPath +'/'+ folder))
+	});
 
 });
 
-gulp.task('removeScripts', function (done) {
-	
-	var src = ['dev/client/apps/**/*.js','!dev/client/apps/**/*.min.js']		
+gulp.task('removeScripts', function (done) {	
+	var src = [dest + '/client/apps/**/*.js','!'+ dest + '/client/apps/**/*.min.js']		
 	del(src,done);
-
 });
-
-// gulp.task('cssmin',['scripts'], function () {
-//   return gulp.src('client/apps/app.css')
-//   	.pipe(autoprefixer())
-//     .pipe(gulp.dest('dev/client/apps'));
-// });
 
 gulp.task('build:vendorScripts', function (done) {
-	
-	var vendorSrc = [
-		'client/bower_components/angular/angular.js',
-		'client/bower_components/angular-ui-router/release/angular-ui-router.js',
-		'client/bower_components/jquery/dist/jquery.js',
-		'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
-	];
-		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dev/client/scripts'));
-
+	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/scripts'));
 });
