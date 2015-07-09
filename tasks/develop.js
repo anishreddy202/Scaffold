@@ -67,19 +67,19 @@ gulp.task('typescript-server:dev', function(){
  	return tsResult.js
 	.pipe(gulp.dest( dest + '/server'));	
 });
-// gulp.task('typescript-client:dev', function(){
-// 	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
-// 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
+gulp.task('typescript-client:dev', function(){
+	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
+	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
-// 	var tsResult = gulp.src(tsSources)
-// 		.pipe(typescript(tsConfigOptions));
+	var tsResult = gulp.src(tsSources)
+		.pipe(typescript(tsConfigOptions));
 
-//  	return tsResult.js
-// 	.pipe(gulp.dest(dest + '/client/apps'));
+ 	return tsResult.js
+	.pipe(gulp.dest(dest + '/client/apps'));
 	
-// });
+});
 
-gulp.task('typescript-client:dev',require('./typescript-client'));
+//gulp.task('typescript-client:dev',require('./typescript-client'));
 
 gulp.task('scripts', function (done) {
 	runSequence(['build:scripts'],['build:vendorScripts'],['removeScripts'], done);
