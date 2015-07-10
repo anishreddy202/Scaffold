@@ -14,6 +14,9 @@ var nodemon     = require('gulp-nodemon');
 var open 		= require('gulp-open');
 var	plumber 	= require('gulp-plumber');
 var	sass    	= require('gulp-sass');
+var fs 		    = require('fs');
+var path 	    = require('path');
+var fileSort    = require('gulp-angular-filesort');
 
 module.exports = function (done) {
   runSequence(
@@ -70,41 +73,12 @@ gulp.task('typescript-client:dist', function(){
 });
 
 gulp.task('scripts:dist', function (done) {
-	runSequence(['build:headerApp:dist','build:cmsApp:dist','build:myApps:dist','build:vendorScripts:dist'],['removeScripts:dist'], done);
+	runSequence(['build:scripts:dist'],['build:vendorScripts:dist'],['removeScripts:dist'], done);
+	
 });
 
-gulp.task('build:headerApp:dist', function (done) {
-	
-	var scripts = gulp.src(['dist/client/apps/header/header.js',
-		'dist/client/apps/header/header.controller.js']);
-			
-	return sq({ objectMode: true }, scripts)
-	    .pipe(concat('header.min.js'))
-		.pipe(uglify())	
-	    .pipe(gulp.dest('dist/client/apps/header'));
-
-});
-
-gulp.task('build:cmsApp:dist', function (done) {
-	var scripts = gulp.src('dist/client/apps/cms/cms.js')
-	
-	return sq({ objectMode: true }, scripts)
-    .pipe(concat('cms.min.js'))
-	.pipe(uglify())	
-    .pipe(gulp.dest('dist/client/apps/cms'));
-
-});
-
-gulp.task('build:myApps:dist', function (done) {
-			
-	var scripts = gulp.src(['dist/client/apps/myapps/myapps.js',
-		'dist/client/apps/myapps/myapps.controller.js']);
-	
-	return sq({ objectMode: true }, scripts)
-    .pipe(concat('myapps.min.js'))
-	.pipe(uglify())		
-    .pipe(gulp.dest('dist/client/apps/myapps'));
-
+gulp.task('build:scripts:dist', function () {
+	require('./build-scripts')('./dist');
 });
 
 gulp.task('removeScripts:dist', function (done) {
@@ -114,7 +88,7 @@ gulp.task('removeScripts:dist', function (done) {
 
 });
 
-gulp.task('styles:dist', function (done) {
+gulp.task('styles:dist', function () {
 	var vendorSrc = [
 		'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
 	];

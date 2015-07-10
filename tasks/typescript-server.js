@@ -2,20 +2,16 @@
 'use script'
 
 var gulp        = require('gulp'),
-	typescript  = require('gulp-typescript'),
-	sourcemaps  = require('gulp-sourcemaps');
+	typescript  = require('gulp-typescript');
 
-var dest = './server';
+
 var tsSources = ['server/**/*.ts', 'typings/**/*.ts'];
-
 var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 
-module.exports = function(){
+module.exports = function(dest){
 	var tsResult = gulp.src(tsSources)
-		.pipe(sourcemaps.init())
-		.pipe(typescript(tsConfigOptions));
+	.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(sourcemaps.write('.'))
-	.pipe(gulp.dest(dest));
+	.pipe(gulp.dest( dest + '/server'));
 }

@@ -58,6 +58,7 @@ gulp.task('copy:html', function () {
 gulp.task('typescript:dev',['typescript-server:dev','typescript-client:dev']);
 
 gulp.task('typescript-server:dev', function(){
+	
 	var tsSources = ['server/**/*.ts', 'typings/**/*.ts'];
 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
@@ -68,6 +69,9 @@ gulp.task('typescript-server:dev', function(){
 	.pipe(gulp.dest( dest + '/server'));	
 });
 gulp.task('typescript-client:dev', function(){
+	
+	//require('./typescript-client')('./dev');
+	
 	var tsSources = [ 'client/apps/**/*.ts','typings/**/*.ts','!client/app.d.ts'];
 	var tsConfigOptions = require('../tsconfig.json').compilerOptions;
 	
@@ -94,22 +98,9 @@ gulp.task('styles', function (done) {
 });
 
 gulp.task('build:scripts', function () {
-	
-	var appsPath = dest + '/client/apps';
-	
-	var folders = fs.readdirSync(appsPath)
-		.filter(function(file) {
-			return fs.statSync(path.join(appsPath, file)).isDirectory();
-		});
-	
-	return folders.map(function(folder){
-	     gulp.src(path.join(appsPath, folder, '/**/*.js'))
-		 	.pipe(fileSort())
-			.pipe(concat(folder + '.min.js'))
-			.pipe(gulp.dest(appsPath +'/'+ folder))
-	});
-
+	require('./build-scripts')('./dev');
 });
+
 
 gulp.task('removeScripts', function (done) {	
 	var src = [dest + '/client/apps/**/*.js','!'+ dest + '/client/apps/**/*.min.js']		
