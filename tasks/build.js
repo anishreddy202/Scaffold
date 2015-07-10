@@ -115,11 +115,11 @@ gulp.task('removeScripts:dist', function (done) {
 });
 
 gulp.task('styles:dist', function (done) {
-		var vendorSrc = [
-		'client/bower_components/bootstrap-theme-vz/paper/bootstrap.min.css',
+	var vendorSrc = [
+		'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
 	];
 		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/styles'));
+	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/assets/styles'));
 });
 
 // gulp.task('cssmin',['scripts'], function () {

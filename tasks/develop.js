@@ -87,10 +87,10 @@ gulp.task('scripts', function (done) {
 
 gulp.task('styles', function (done) {
 	var vendorSrc = [
-		'client/bower_components/bootstrap-theme-vz/paper/bootstrap.min.css',
+		'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
 	];
 		
-	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/styles'));
+	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/assets/styles'));
 });
 
 gulp.task('build:scripts', function () {

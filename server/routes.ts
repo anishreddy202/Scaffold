@@ -17,8 +17,21 @@ module.exports = function(app){
 	app.get('/myapps',function(req,res){
 	  res.sendFile('server/myapps/apps.html',{ root: './' });
 	});
-		app.get('/products',function(req,res){
-	  res.sendFile('server/products/cms.html',{ root: './' });
+	
+	app.get('/products',function(req,res){
+	  res.sendFile('server/products/home.html',{ root: './' });
+	});
+	
+	app.get('/communities',function(req,res){
+	  res.sendFile('server/communities/index.html',{ root: './' });
+	});
+	
+	app.get('/docs',function(req,res){
+	  res.sendFile('server/docs/index.html',{ root: './' });
+	});
+	
+	app.get('/devices',function(req,res){
+	  res.sendFile('server/devices/index.html',{ root: './' });
 	});
 	
 	app.use(function(req, res) {

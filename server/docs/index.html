@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Home Page</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+   <link rel="stylesheet" href="apps/app.css">
+ </head>
+ <body >
+     <div id="wrapper" >
+		 <div ng-app="uiApp.header">
+         	<header data-ng-include=" 'apps/header/header.html'"></header>
+		 </div>
+         <section id="mainSection">
+            <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-3 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active">
+          <a href="#"><span>API List</span><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="false" aria-controls="collapse0">
+            <strong>Spark IoT</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse0" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li>
+              <a href="#" class="apiSubItem">Get device list</a>
+            </li>
+            <li>
+              <a href="#" class="apiSubItem">Turn on switch</a>
+            </li>
+            <li>
+              <a href="#" class="apiSubItem">Turn off switch</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            <strong>ThingSpace MC</strong>
+            <span> </span><span class="caret"></span>
+          </a>
+          <ul id="collapse1" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="selected apiSubItem">Overview</a></li>
+            <li><a href="#" class="apiSubItem">Activate, suspend, resume, deactivate</a></li>
+            <li><a href="#" class="apiSubItem">Device list</a></li>
+            <li><a href="#" class="apiSubItem">Location</a></li>
+            <li><a href="#" class="apiSubItem">Registered/Unregistered</a></li>
+            <li><a href="#" class="apiSubItem">Connected/Disconnected</a></li>
+            <li><a href="#" class="apiSubItem">Usage</a></li>
+            <li><a href="#" class="apiSubItem">Rated Usage</a></li>
+            <li><a href="#" class="apiSubItem">Alarm creation and manipulation</a></li>
+            <li><a href="#" class="apiSubItem">ECPDID and Account moves</a></li>
+            <li><a href="#" class="apiSubItem">IP pool changes</a></li>
+            <li><a href="#" class="apiSubItem">MDN changes</a></li>
+            <li><a href="#" class="apiSubItem">FOTA API set</a></li>
+            <li><a href="#" class="apiSubItem">SMS wake up </a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            <strong>Dakota</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse2" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Device Sensor Configuration Service</a></li>
+            <li><a href="#" class="apiSubItem">CreateSensorConfiguration</a></li>
+            <li><a href="#" class="apiSubItem">DeleteSensorConfiguration</a></li>
+            <li><a href="#" class="apiSubItem">GetSensorConfiguration</a></li>
+            <li><a href="#" class="apiSubItem">GetSensorConfigurationStatus</a></li>
+            <li><a href="#" class="apiSubItem">UpdateSensorConfiguration</a></li>
+            <li><a href="#" class="apiSubItem">UpdateSensorConfigurationAssignmentList</a></li>
+            <li><a href="#" class="apiSubItem">Data Delivery Service</a></li>
+            <li><a href="#" class="apiSubItem">GetMessages</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+            <strong>VaaS</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse3" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Login</a></li>
+            <li><a href="#" class="apiSubItem">HTTP Device</a></li>
+            <li><a href="#" class="apiSubItem">Media Access</a></li>
+            <li><a href="#" class="apiSubItem">Event Log</a></li>
+            <li><a href="#" class="apiSubItem">Object Management MBus</a></li>
+            <li><a href="#" class="apiSubItem">Object Management Service</a></li>
+            <li><a href="#" class="apiSubItem">PTZ Protocol</a></li>
+            <li><a href="#" class="apiSubItem">vMX Service</a></li>
+            <li><a href="#" class="apiSubItem">Geo World Model</a></li>
+            <li><a href="#" class="apiSubItem">Media Player API</a></li>
+            <li><a href="#" class="apiSubItem">Camera Management</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            <strong>Auto Share</strong>
+            <span> </span><span class="caret"></span></a>
+          <ul id="collapse4" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Door unlock/lock</a></li>
+            <li><a href="#" class="apiSubItem">Engine Start</a></li>
+            <li><a href="#" class="apiSubItem">Trunk</a></li>
+            <li><a href="#" class="apiSubItem">Fuel Reading</a></li>
+            <li><a href="#" class="apiSubItem">Maintenance/Diagnostics Alerts</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            <strong>EMAG</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse5" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">DeliveryReportSMReq  Outbound</a></li>
+            <li><a href="#" class="apiSubItem">DeliveryReportSMReq  Inbound</a></li>
+            <li><a href="#" class="apiSubItem">DeliverSMReq (outbound)</a></li>
+            <li><a href="#" class="apiSubItem">DeliverSMRsp (inbound)</a></li>
+            <li><a href="#" class="apiSubItem">OptoutReq (inbound)</a></li>
+            <li><a href="#" class="apiSubItem">OptoutRsp (outbound)</a></li>
+            <li><a href="#" class="apiSubItem">DeliveryStatusReq (inbound)</a></li>
+            <li><a href="#" class="apiSubItem">DeliveryStatusRsp (outbound)</a></li>
+            <li><a href="#" class="apiSubItem">UserInfoReq (inbound)</a></li>
+            <li><a href="#" class="apiSubItem">UserInfoRsp (outbound)</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+            <strong>VZ Cloud</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse6" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Virtual machine turnup</a></li>
+            <li><a href="#" class="apiSubItem">Virtual disk turnup</a></li>
+            <li><a href="#" class="apiSubItem">Virtual network creation</a></li>
+            <li><a href="#" class="apiSubItem">Public IP addresses</a></li>
+            <li><a href="#" class="apiSubItem">Firewall config</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+            <strong>MADE Partners</strong>
+            <span> </span><span class="caret"></span>
+          </a>
+          <ul id="collapse7" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">ILS</a></li>
+            <li><a href="#" class="apiSubItem">Bug Labs</a></li>
+            <li><a href="#" class="apiSubItem">New Boundary</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+            <strong>Network API</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse8" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">subItems</a></li>
+            <li><a href="#" class="apiSubItem">Terminal Location</a></li>
+            <li><a href="#" class="apiSubItem">Terminal Status</a></li>
+            <li><a href="#" class="apiSubItem">Carrier Properties</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
+            <strong>MCS</strong>
+            <span> </span><span class="caret"></span>
+          </a>
+          <ul id="collapse9" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">certinvite_id</a></li>
+            <li><a href="#" class="apiSubItem">certinvitepas</a></li>
+            <li><a href="#" class="apiSubItem">status</a></li>
+            <li><a href="#" class="apiSubItem">currency</a></li>
+            <li><a href="#" class="apiSubItem">validity_years</a></li>
+            <li><a href="#" class="apiSubItem">certificateid</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
+            <strong>VZ Big Data</strong>
+            <span> </span>
+            <span class="caret"></span></a>
+          <ul id="collapse10" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Authorization</a></li>
+            <li><a href="#" class="apiSubItem">Name</a></li>
+            <li><a href="#" class="apiSubItem">Stores</a></li>
+            <li><a href="#" class="apiSubItem">Protocol</a></li>
+            <li><a href="#" class="apiSubItem">Transfer</a></li>
+            <li><a href="#" class="apiSubItem">App</a></li>
+            <li><a href="#" class="apiSubItem">File</a></li>
+            <li><a href="#" class="apiSubItem">Record Count</a></li>
+            <li><a href="#" class="apiSubItem">Translate</a></li>
+            <li><a href="#" class="apiSubItem">Size</a></li>
+            <li><a href="#" class="apiSubItem">Format</a></li>
+            <li><a href="#" class="apiSubItem">Offset</a></li>
+            <li><a href="#" class="apiSubItem">Item</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="false" aria-controls="collapse11">
+            <strong>VIP</strong>
+            <span> </span>
+            <span class="caret"></span>
+          </a>
+          <ul id="collapse11" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">Service Activation Request</a></li>
+            <li><a href="#" class="apiSubItem">Service Existing</a></li>
+            <li><a href="#" class="apiSubItem">Service Create</a></li>
+            <li><a href="#" class="apiSubItem">Fulfillment Activation Request</a></li>
+            <li><a href="#" class="apiSubItem">Purchase Existing</a></li>
+            <li><a href="#" class="apiSubItem">Purchase Create</a></li>
+            <li><a href="#" class="apiSubItem">SIM Activation</a></li>
+            <li><a href="#" class="apiSubItem">Hotline Activation</a></li>
+            <li><a href="#" class="apiSubItem">Device Upgrade</a></li>
+            <li><a href="#" class="apiSubItem">Purchase Accessory</a></li>
+            <li><a href="#" class="apiSubItem">Price Plan Change Only</a></li>
+            <li><a href="#" class="apiSubItem">ESN Change Only</a></li>
+            <li><a href="#" class="apiSubItem">Cost Center Code Change</a></li>
+            <li><a href="#" class="apiSubItem">Feature Change Only</a></li>
+            <li><a href="#" class="apiSubItem">MTN Change</a></li>
+            <li><a href="#" class="apiSubItem">MTN User Name Change</a></li>
+            <li><a href="#" class="apiSubItem">MTN Reassign</a></li>
+            <li><a href="#" class="apiSubItem">MTN Primary User Address Update</a></li>
+            <li><a href="#" class="apiSubItem">MTN Suspend</a></li>
+            <li><a href="#" class="apiSubItem">MTN Disconnect</a></li>
+            <li><a href="#" class="apiSubItem">MTN  Reconnect</a></li>
+            <li><a href="#" class="apiSubItem">MTN Current Usage Details</a></li>
+            <li><a href="#" class="apiSubItem">PRL version</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+            <strong>Grid Wide</strong>
+            <span> </span><span class="caret"></span></a>
+          <ul id="collapse12" class="panel-collapse collapse" aria-labelledby="headingOne">
+            <li><a href="#" class="apiSubItem">createBillingCycles</a></li>
+            <li><a href="#" class="apiSubItem">createDeviceGroup</a></li>
+            <li><a href="#" class="apiSubItem">createIntervalReport</a></li>
+            <li><a href="#" class="apiSubItem">createMeterAssetRepor</a></li>
+            <li><a href="#" class="apiSubItem">createMeterProgram </a></li>
+            <li><a href="#" class="apiSubItem">createOutageStatsReport </a></li>
+            <li><a href="#" class="apiSubItem">createPolicyGroup</a></li>
+            <li><a href="#" class="apiSubItem">createPowerQualityReport</a></li>
+            <li><a href="#" class="apiSubItem">createRegisterReport</a></li>
+            <li><a href="#" class="apiSubItem">createRole</a></li>
+            <li><a href="#" class="apiSubItem">createRssiReport</a></li>
+            <li><a href="#" class="apiSubItem">createServicePoints</a></li>
+            <li><a href="#" class="apiSubItem">deleteBillingCycles</a></li>
+            <li><a href="#" class="apiSubItem">deleteMeterAssetReport </a></li>
+            <li><a href="#" class="apiSubItem">deleteMeterProgram</a></li>
+            <li><a href="#" class="apiSubItem">deletePolicyGroup</a></li>
+            <li><a href="#" class="apiSubItem">deleteServicePoint</a></li>
+            <li><a href="#" class="apiSubItem">deleteSoftwarePackage </a></li>
+            <li><a href="#" class="apiSubItem">deleteUser</a></li>
+            <li><a href="#" class="apiSubItem">getDeviceGroupAttributeValues </a></li>
+            <li><a href="#" class="apiSubItem">getDeviceStatuses</a></li>
+            <li><a href="#" class="apiSubItem">getEventPublishing</a></li>
+            <li><a href="#" class="apiSubItem">getGroupCount</a></li>
+            <li><a href="#" class="apiSubItem">getPolicyStatus</a></li>
+            <li><a href="#" class="apiSubItem">grantRolePermission </a></li>
+            <li><a href="#" class="apiSubItem">grantUserPermission </a></li>
+            <li><a href="#" class="apiSubItem">grantUserRole</a></li>
+            <li><a href="#" class="apiSubItem">loadControlBoost</a></li>
+            <li><a href="#" class="apiSubItem">loadControlOverride</a></li>
+            <li><a href="#" class="apiSubItem">programmableCommunicatingThermost</a></li>
+            <li><a href="#" class="apiSubItem">revokeRolePermission</a></li>
+            <li><a href="#" class="apiSubItem">revokeUserPermission </a></li>
+            <li><a href="#" class="apiSubItem">revokeUserRole</a></li>
+            <li><a href="#" class="apiSubItem">rolePermissions</a></li>
+            <li><a href="#" class="apiSubItem">searchAuditTrail</a></li>
+            <li><a href="#" class="apiSubItem">searchBillingCycles</a></li>
+            <li><a href="#" class="apiSubItem">searchDevices</a></li>
+            <li><a href="#" class="apiSubItem">searchGroups</a></li>
+            <li><a href="#" class="apiSubItem">searchMeterPrograms</a></li>
+            <li><a href="#" class="apiSubItem">searchPolicies</a></li>
+            <li><a href="#" class="apiSubItem">searchPolicyGroups</a></li>
+            <li><a href="#" class="apiSubItem">searchRoles</a></li>
+            <li><a href="#" class="apiSubItem">searchServicePoints</a></li>
+            <li><a href="#" class="apiSubItem">searchSoftwarePackages</a></li>
+            <li><a href="#" class="apiSubItem">searchTopics</a></li>
+            <li><a href="#" class="apiSubItem">searchUsers</a></li>
+            <li><a href="#" class="apiSubItem">updateMeterProgram </a></li>
+            <li><a href="#" class="apiSubItem">updateServicePoints </a> </li>
+            <li><a href="#" class="apiSubItem">updateSoftwarePackageState</a></li>
+            <li><a href="#" class="apiSubItem">updateUser</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 main">
+      <div>
+        <ol class="breadcrumb">
+          <li><a href="#">ThingSpace MC</a></li>
+          <li class="active">Overview</li>
+        </ol>
+        <div>
+          <h3>Wireless Network Services (WNS) Overview</h3>
+          <p>At the heart of every wireless M2M application are the wireless devices that produce asset data that is later routed to
+            the back-end application servers – such as meter readings, sensor data, readings from medical equipment, and so forth. To
+            improve operational efficiency and resources, M2M applications can automate the provisioning, monitoring, and control of
+            wireless M2M devices by leveraging Verizon's WNS.</p>
+          <p>Wireless Network Services (WNS) provides APIs that allow you to integrate device management functions into enterprise management
+            systems and custom applications. WNS consists of a set of standards-compliant SOAP/XML Web Services that offer you a single,
+            portable, and easy-to-use interface to the Verizon Wireless network, reducing the complexity of developing M2M applications.
+            WNS shields developers from the underlying complexity of M2M applications. For example, to change the rate plan for a deployed
+            device, an M2M application simply calls a single WNS web service API, Change Device Rate Plan, and provides two parameters:
+            a device ID and a desired price plan.</p>
+          <ul>
+            <li><a href="#" class="apiSubItem">Best Practices</a></li>
+            <li><a href="#" class="apiSubItem">Request Parameters</a></li>
+            <li><a href="#" class="apiSubItem">Response</a></li>
+            <li><a href="#" class="apiSubItem">Callback</a></li>
+            <li><a href="#" class="apiSubItem">Sample Requests</a></li>
+            <li>
+              <span>Error Messages</span>
+              <ul>
+                <li><a href="#" class="apiSubItem">Synchronous Error Messages</a></li>
+                <li><a href="#" class="apiSubItem">Callback Error Messages</a></li>
+              </ul>
+            </li>
+          </ul>
+          <br>
+          <a href="./resources/content/sampleSDK.txt" download="" >
+            <button class="btn btn-primary" >
+              <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+              <span> Download SDK</span></button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        </section>
+     </div>    
+
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-ui-router.js"></script>
+	<script src="scripts/jquery.js"></script>
+	<script src="scripts/bootstrap.js"></script>
+    <script src="apps/header/header.min.js"></script>
+ </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Home Page</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+   <link rel="stylesheet" href="apps/app.css">
+ </head>
+ <body >
+     <div id="wrapper">
+		 <div ng-app="uiApp.header">
+         	<header data-ng-include=" 'apps/header/header.html'"></header>
+		 </div>
+		  <section id="mainSection">
+                <div class="container-fluid">
+  					<div class="row text-center">
+						  <div class="col-md-1"></div>
+						  <div class="col-md-10 product-base">
+							  <div class="topicons">
+								  <span class="item">
+									  <a><span class="icon-m2mmc"></span><div class="name">ThingSpace MC</div></a>
+								  </span>
+								          <span class="item">
+          <a href="#"><span class="icon-dakota"></span><div class="name">Dakota</div></a>
+        </span>
+								  <span class="item">
+										<a><span class="icon-vaas"></span><div class="name">Spark IoT</div></a>
+									</span>
+									<span class="item selected">
+										<a><span class="icon-autoshare"></span><div class="name">Auto Share</div></a>
+									</span>
+									<span class="item">
+										<a><span class="icon-emag"></span><div class="name">EMAG</div></a>
+									</span>
+							  </div>
+							        <div class="content-container">
+        <h3>Lorem Ipsum</h3>
+        <ul>
+          <li>
+            <h4>Eiusmod Tempor</h4>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</span>
+          </li>
+          <li>
+            <h4>Exercitation Ullamco</h4>
+            <span>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bottomicons">
+        <span class="item">
+          <a href="#"><span class="icon-vzcloud"></span><div class="name">VZ Cloud</div></a>
+        </span>
+        <span class="item">
+          <a href="#"><span class="icon-mcs"></span><div class="name">MCS</div></a>
+        </span>
+        <span class="item">
+          <a href="#"><span class="icon-vzbigdata"></span><div class="name">VZ Big Data</div></a>
+        </span>
+        <span class="item">
+          <a href="#"><span class="icon-analytics"></span><div class="name">Analytics</div></a>
+        </span>
+        <span class="item">
+          <a href="#"><span class="icon-gridwide"></span><div class="name">Grid Wide</div></a>
+        </span>
+      </div>
+						  </div>
+						  <div class="col-md-1"></div>
+  					</div>
+                </div>
+      	   </section>
+			 <footer class="dev-footer">
+				 <div class="row">
+  <div class="col-md-3">© 2015 Verizon</div>
+  <div class="col-md-6 col-md-offset-3">
+    <a href="http://www22.verizon.com/about/" target="_blank">About Us</a>
+    <span class="vbar">|</span>
+    <span>Connect with us</span>
+    <a class="socialIcon" title="Become a Fan of Verizon IoT on Facebook" href="http://www.facebook.com/verizon" target="_blank"><span>&nbsp;</span><img src="assets/images/facebook.png" height="18"></a>
+    <a class="socialIcon" title="Follow Us on Twitter" href="http://twitter.com/verizonwireless" target="_blank"><span>&nbsp;</span><img src="assets/images/twitter.png" height="18"></a>
+    <a class="socialIcon" title="Add Us on Google+" href="https://plus.google.com/+verizon" target="_blank"><span>&nbsp;</span><img src="assets/images/google-plus.png" height="18"></a>
+    <span class="vbar">|</span>
+    <a href="http://www22.verizon.com/privacy/" target="_blank">Privacy</a>
+    <span class="vbar">|</span>
+    <a href="http://www.verizonwireless.com/b2c/globalText?contentType=Legal%20Notice" target="_blank">Legal Notices</a>
+  </div>
+</div>
+			 </footer>
+     </div>    
+
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-ui-router.js"></script>
+	<script src="scripts/jquery.js"></script>
+	<script src="scripts/bootstrap.js"></script>
+   
+	  
+   <script src="apps/header/header.min.js"></script>
+ </body>
+</html>
