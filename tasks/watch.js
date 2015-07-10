@@ -22,7 +22,7 @@ module.exports = function(){
   	});
 	  
 	watch(['server/**/*.html','client/apps/**/*.html'], function () {
-    	gulp.run('copy:html').pipe(livereload());
+    	gulp.run('copy:html');
   	});
     	  
 	watch('server/**/*.ts', function () {

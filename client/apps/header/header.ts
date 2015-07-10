@@ -4,6 +4,6 @@
 'use strict';
 
 	angular
-		.module('uiApp.header',[]);
+		.module('uiApp.header',['ui.router']);
 
 })();

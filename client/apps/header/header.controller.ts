@@ -7,11 +7,17 @@
     .module('uiApp.header')
     .controller('HeaderCtrl', HeaderCtrl);
 
-  HeaderCtrl.$inject = [];
+  HeaderCtrl.$inject = ['$state'];
 
   function HeaderCtrl () {
     var vm = this;
 	vm.message = "This is Header"
+	
+	vm.createApp = createApp;
+	
+	function createApp ($state){
+		$state.go('myapps')
+	}
   }
 
 })();
