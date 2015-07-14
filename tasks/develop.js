@@ -98,6 +98,7 @@ gulp.task('scripts', function (done) {
 gulp.task('styles', function (done) {
 	var vendorSrc = [
 		'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
+		'client/bower_components/angular-swagger-ui/dist/css/swagger-ui.min.css',
 	];
 		
 	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/assets/styles'));
