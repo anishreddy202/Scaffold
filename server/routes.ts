@@ -3,10 +3,28 @@
 
 var pkg = require('../package.json');
 var configJson = require('./config/environment');
+var rest = require('restler');
+var http = require('http');
 
 module.exports = function(app){
 	
 	app.route('/api').get((req, res) => {
+		if(req.method == 'GET'){
+			http.get(req.headers.realurl,function(response){			
+				var body = '';
+		        response.on('data', function(d) {
+		            body += d;
+		        });
+		        response.on('end', function() {
+		            var parsed = JSON.parse(body);
+					res.json(parsed);
+		        });
+				
+			})			
+		}
+	});
+	
+	app.route('/api/status').get((req, res) => {
 		res.json({"name": pkg.name, "version": "v1", "rev": pkg.version });
 	});
 

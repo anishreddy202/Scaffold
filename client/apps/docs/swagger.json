@@ -13,28 +13,27 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "api.nutritionix.com",
-    "basePath": "/api/v1_1",
+    "host": "status.vdmstest.com",
+    "basePath": "/api/v1",
     "tags": [
         {
-            "name": "users",
-            "description": "rest APIs for user CRUD Operations"
+            "name": "status",
+            "description": "status for each pop"
         }
     ],
     "schemes": [
         "http"
     ],
     "paths": {
-        "/users": {
+        "/status": {
             "get": {
                 "tags": [
-                    "users"
+                    "status"
                 ],
-                "summary": "Get Users",
-                "description": "This can only be done by the logged in user.",
-                "operationId": "getUsers",
+                "summary": "Get Status",
+                "description": "Get Network Status For POPS",
+				"operationId":"getStatus",
                 "produces": [
-                    "application/xml",
                     "application/json"
                 ],
                 "parameters": [
