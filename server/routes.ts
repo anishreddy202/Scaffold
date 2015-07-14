@@ -27,7 +27,7 @@ module.exports = function(app){
 	});
 	
 	app.get('/docs',function(req,res){
-	  res.sendFile('server/docs/index.html',{ root: './' });
+	  res.sendFile('server/docs/api.html',{ root: './' });
 	});
 	
 	app.get('/devices',function(req,res){

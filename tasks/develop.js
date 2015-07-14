@@ -31,14 +31,20 @@ var srcFiles= [
 
 var htmlFiles = [
 	'client/apps/**/*.html',
+	'client/apps/**/*.md',
+	'client/apps/**/*.json',
 	'server/**/*.html',
+	
 ];
 
 var vendorSrc = [
 	'client/bower_components/angular/angular.js',
 	'client/bower_components/angular-ui-router/release/angular-ui-router.js',
 	'client/bower_components/jquery/dist/jquery.js',
-	'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
+	'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+	'client/bower_components/marked/lib/marked.js',
+	'client/bower_components/angular-md/dist/angular-md.js',
+	'client/bower_components/angular-swagger-ui/dist/scripts/swagger-ui.js'
 ];
 
 var dest = "./dev"

@@ -5,6 +5,9 @@
     "angular": "~1.4.1",
     "angular-ui-router": "~0.2.15",
     "bootstrap-sass": "~3.3.5",
-    "bootstrap-theme-vz": "https://github.com/IRVUI/bootstrap-theme-vz.git"
+    "bootstrap-theme-vz": "https://github.com/IRVUI/bootstrap-theme-vz.git",
+    "angular-md": "~1.0.0",
+    "angular-swagger-ui": "~0.1.6",
+    "swagger-ui": "~2.1.0"
   }
 }

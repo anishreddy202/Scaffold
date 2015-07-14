@@ -2,8 +2,6 @@
 
 (function(){
 'use strict';
-
 	angular
-		.module('uiApp.header',[]);
-
+		.module('uiApp.docs',['yaru22.md','swaggerUi']);
 })();

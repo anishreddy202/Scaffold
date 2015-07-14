@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Home Page</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="assets/styles/bootstrap.min.css">
+   <link rel="stylesheet" href="apps/app.css">
+ </head>
+ <body >
+     <div id="wrapper" >
+		 <div ng-app="uiApp.header">
+         	<header data-ng-include=" 'apps/header/header.html'"></header>
+		 </div>
+         <section id="mainSection">
+         	<div ng-app="uiApp.docs">
+         		<header data-ng-include=" 'apps/docs/docs.html'"></header>
+		 	</div>
+		 </section>
+     </div>    
+
+	<script src="scripts/marked.js"></script>
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/angular-ui-router.js"></script>
+	<script src="scripts/jquery.js"></script>
+	<script src="scripts/bootstrap.js"></script>
+	<script src="scripts/angular-md.js"></script>
+	<script src="scripts/swagger-ui.js"></script>
+    <script src="apps/header/header.min.js"></script>
+	<script src="apps/docs/docs.min.js"></script>
+	<script>
+		angular.element(document).ready(function() {
+	      angular.bootstrap(document, ['uiApp.docs']);
+	    });
+	</script>
+ </body>
+</html>
