@@ -20,31 +20,56 @@ var fileSort    = require('gulp-angular-filesort');
 
 module.exports = function (done) {
   runSequence(
-    ['clean:dist'],
-	['copy:dist'],
-	['sass:dist','styles:dist'],
-	['typescript:dist'],
-	['scripts:dist'],
-	['serve:dist'],
+    ['clean:dist'],['copy:dist','copy-html:dist'],['sass:dist','styles:dist'],
+	['typescript:dist'],['scripts:dist'],['serve:dist'],
     done);
 };
 	
 var srcFiles= [
 	'package.json',
 	'client/assets/**/*',
-	'client/apps/**/*.html',
 	'server/**/*',
-	'!server/**/*.ts'
+	'!server/**/*.ts',
+	'!server/**/*.js.map'
 ]
 
-var src = "./dist"
+var htmlFiles = [
+	'client/apps/**/*.html',
+	'client/apps/**/*.md',
+	'client/apps/**/*.json',
+	'server/**/*.html',	
+];
+
+var vendorSrc = [
+	'client/bower_components/angular/angular.js',
+	'client/bower_components/angular-ui-router/release/angular-ui-router.js',
+	'client/bower_components/jquery/dist/jquery.js',
+	'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
+	'client/bower_components/marked/lib/marked.js',
+	'client/bower_components/angular-md/dist/angular-md.js',
+	'client/bower_components/angular-swagger-ui/dist/scripts/swagger-ui.js'
+];
+
+var styleVendors = [
+	'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
+	'client/bower_components/angular-swagger-ui/dist/css/swagger-ui.min.css',
+];
+
+
+var dest = "./dist"
 
 gulp.task('clean:dist', function (done) {
-  del(['dist/**', '!dist', '!dist/.git{,/**}'], done);
+	del([dest + '/**', '!'+ dest], done);
+  // del(['dist/**', '!dist', '!dist/.git{,/**}'], done);
 });
 
 gulp.task('copy:dist', function () {
-  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dist/'));
+  // return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest('dist/'));
+  return gulp.src(srcFiles, { base: './' }).pipe(gulp.dest(dest));
+});
+
+gulp.task('copy-html:dist', function () {
+  return gulp.src(htmlFiles, { base: './' }).pipe(gulp.dest(dest));
 });
 
 gulp.task('typescript:dist',['typescript-server:dist','typescript-client:dist']);
@@ -57,7 +82,7 @@ gulp.task('typescript-server:dist', function(){
 		.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(gulp.dest('./dist/server'));
+	.pipe(gulp.dest( dest + '/server'));
 		
 });
 gulp.task('typescript-client:dist', function(){
@@ -68,7 +93,7 @@ gulp.task('typescript-client:dist', function(){
 		.pipe(typescript(tsConfigOptions));
 
  	return tsResult.js
-	.pipe(gulp.dest('./dist/client/apps'));
+	.pipe(gulp.dest(dest + '/client/apps'));
 	
 });
 
@@ -88,43 +113,35 @@ gulp.task('removeScripts:dist', function (done) {
 
 });
 
-gulp.task('styles:dist', function () {
-	var vendorSrc = [
-		'client/bower_components/bootstrap-theme-vz/iot/bootstrap.min.css',
-	];
-		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/assets/styles'));
+gulp.task('styles:dist', function () {		
+	return gulp.src(styleVendors).pipe(gulp.dest(dest + '/client/assets/styles'));
 });
 
-// gulp.task('cssmin',['scripts'], function () {
-//   return gulp.src('client/apps/app.css')
-//   	.pipe(autoprefixer())
-//     .pipe(gulp.dest('dev/client/apps'));
-// });
 
-gulp.task('build:vendorScripts:dist', function (done) {
-	
-	var vendorSrc = [
-		'client/bower_components/angular/angular.js',
-		'client/bower_components/angular-ui-router/release/angular-ui-router.js',
-		'client/bower_components/jquery/dist/jquery.js',
-		'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js'
-	];
-		
-	return gulp.src(vendorSrc).pipe(gulp.dest('dist/client/scripts'));
-
+gulp.task('build:vendorScripts:dist', function (done) {		
+	return gulp.src(vendorSrc).pipe(gulp.dest(dest + '/client/scripts'));
 });
+
+gulp.task('sass:dist', function (done) {
+
+  return gulp.src('client/apps/app.scss')
+        .pipe(plumber())
+        .pipe(sass())
+		.pipe(minifyCss())
+        .pipe(gulp.dest('dist/client/apps'));
+});
+
 
 gulp.task('serve:dist', function (done) {
 	
-var config = require('../server/config/environment');
+	var config = require('../server/config/environment');
+	
+	var openOpts = {
+	    url: 'http://localhost:' + config.port,
+	    already: false
+	};
 
-var openOpts = {
-    url: 'http://localhost:' + config.port,
-    already: false
-};
-
-nodemon({ 
+	nodemon({ 
 		script: 'dist/server/server.js',
 		ext:'js'
 		})
@@ -138,14 +155,5 @@ nodemon({
                 }
             });
 
-});
-
-gulp.task('sass:dist', function (done) {
-
-  return gulp.src('client/apps/app.scss')
-        .pipe(plumber())
-        .pipe(sass())
-		.pipe(minifyCss())
-        .pipe(gulp.dest('dist/client/apps'));
 });
 

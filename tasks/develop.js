@@ -26,7 +26,8 @@ var srcFiles= [
 	'package.json',
 	'client/assets/**/*',
 	'server/**/*',
-	'!server/**/*.ts'
+	'!server/**/*.ts',
+	'!server/**/*.js.map'
 ]
 
 var htmlFiles = [

@@ -36,51 +36,36 @@ module.exports = function(app){
 					res.json(parsed);
 				});				
 			}
-
-
-		// console.log(req.headers);
-		// console.log(queryParams);
-		// if(req.method == 'GET'){
-		// 	http.get(req.headers.realurl + "?"+ queryParams,function(response){			
-		// 		var body = '';
-		//         response.on('data', function(d) {
-		//             body += d;
-		//         });
-		//         response.on('end', function() {
-
-
-		//         });
-				
-		// 	})			
-		// }
 	});
 	
 	app.get('/',function(req,res){
-	  res.sendFile('server/Home/home.html',{ root: './' });
+		console.log(app.get('appPath'));
+		console.log(configJson);
+	  res.sendFile('server/Home/home.html',{ root: configJson.root });
 	});
 	
 	app.get('/myapps',function(req,res){
-	  res.sendFile('server/myapps/apps.html',{ root: './' });
+	  res.sendFile('server/myapps/apps.html',{ root: configJson.root });
 	});
 	
 	app.get('/products',function(req,res){
-	  res.sendFile('server/products/home.html',{ root: './' });
+	  res.sendFile('server/products/home.html',{ root: configJson.root });
 	});
 	
 	app.get('/communities',function(req,res){
-	  res.sendFile('server/communities/index.html',{ root: './' });
+	  res.sendFile('server/communities/index.html',{ root: configJson.root });
 	});
 	
 	app.get('/docs',function(req,res){
-	  res.sendFile('server/docs/api.html',{ root: './' });
+	  res.sendFile('server/docs/api.html',{ root: configJson.root });
 	});
 	
 	app.get('/devices',function(req,res){
-	  res.sendFile('server/devices/index.html',{ root: './' });
+	  res.sendFile('server/devices/index.html',{ root: configJson.root });
 	});
 	
 	app.use(function(req, res) {
-      res.sendFile('server/Error/error.html',{ root: './' });
+      res.sendFile('server/Error/error.html',{ root: configJson.root });
 	});
 	
 }
