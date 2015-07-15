@@ -5,29 +5,56 @@ var pkg = require('../package.json');
 var configJson = require('./config/environment');
 var rest = require('restler');
 var http = require('http');
+var qs = require('querystring');
+var Client = require('node-rest-client').Client;
 
 module.exports = function(app){
 	
 	app.route('/api').get((req, res) => {
-		if(req.method == 'GET'){
-			http.get(req.headers.realurl,function(response){			
-				var body = '';
-		        response.on('data', function(d) {
-		            body += d;
-		        });
-		        response.on('end', function() {
-		            var parsed = JSON.parse(body);
-					res.json(parsed);
-		        });
-				
-			})			
+		
+
+
+		var client = new Client();
+		var queryParams = qs.stringify(req.query);
+		var args ={
+			headers:{ }
 		}
+		if(req.headers.apitoken)
+			args.headers.apitoken = req.headers.apitoken;
+
+			if(req.method == 'GET'){
+				client.get(req.headers.realurl + "?"+ queryParams,args, function(data, response){
+					var body = data.toString('utf-8');
+					console.log(body);
+					var parsed = {};
+					try{
+						parsed = JSON.parse(body);			
+					}
+					catch(ex){
+						parsed = body;
+					}
+					res.json(parsed);
+				});				
+			}
+
+
+		// console.log(req.headers);
+		// console.log(queryParams);
+		// if(req.method == 'GET'){
+		// 	http.get(req.headers.realurl + "?"+ queryParams,function(response){			
+		// 		var body = '';
+		//         response.on('data', function(d) {
+		//             body += d;
+		//         });
+		//         response.on('end', function() {
+
+
+		//         });
+				
+		// 	})			
+		// }
 	});
 	
-	app.route('/api/status').get((req, res) => {
-		res.json({"name": pkg.name, "version": "v1", "rev": pkg.version });
-	});
-
 	app.get('/',function(req,res){
 	  res.sendFile('server/Home/home.html',{ root: './' });
 	});

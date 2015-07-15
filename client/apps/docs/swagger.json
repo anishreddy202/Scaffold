@@ -19,12 +19,48 @@
         {
             "name": "status",
             "description": "status for each pop"
+        },
+		{
+            "name": "statussummary",
+            "description": "status summary"
+        },
+		{
+            "name": "users",
+            "description": "admin users"
         }
     ],
     "schemes": [
         "http"
     ],
     "paths": {
+		 "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get Users",
+                "description": "Get Network Status Admin Users",
+				"operationId":"getUsers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+					{
+						"name": "apiToken",
+						"in": "header",
+						"type": "string"
+					}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    },
+					"401":{
+						"description": "unauthorized"
+					}
+                }
+            }
+        },
         "/status": {
             "get": {
                 "tags": [
@@ -48,12 +84,36 @@
 					}
                 }
             }
-        }
+        },
+		"/status/summary":{
+			"get":{
+				"tags": [
+                    "status"
+                ],
+				"summary":"Get Status Summary",
+				"description": "Get Network Status summary for POPS",
+				"operationId":"getStatusSummary",
+				"parameters": [
+					{
+						"name": "Category",
+						"in": "query",
+						"description": "categories to filter by",
+						"type": "string"
+					},
+					{
+						"name": "Service",
+						"in": "query",
+						"description": "categories to filter by",
+						"type": "string"
+					}
+                ]		
+			}
+		}
     },
     "securityDefinitions": {
         "api_key": {
             "type": "apiKey",
-            "name": "api_key",
+            "name": "apiToken",
             "in": "header"
         }
     },

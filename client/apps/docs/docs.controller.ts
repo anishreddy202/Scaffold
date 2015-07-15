@@ -22,10 +22,6 @@
 		request.headers['realURL'] = request.url;
 		request.realURL =  request.url;
 		request.url = "http://localhost:3000/api";
-		
-		
-		
-		console.log(request);
 	}
 	
 	function erroHandler(/*HTTP response*/ response, /*HTTP status*/ status){
