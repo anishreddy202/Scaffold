@@ -47,7 +47,7 @@ var vendorSrc = [
 	'client/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
 	'client/bower_components/marked/lib/marked.js',
 	'client/bower_components/angular-md/dist/angular-md.js',
-	'client/bower_components/angular-swagger-ui/dist/scripts/swagger-ui.js'
+	'client/scripts/swagger-ui.js'
 ];
 
 var styleVendors = [
